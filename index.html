@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>2026 대구일중 사제동행 힐링캠프 안내</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Google Fonts: Pretendard alternative & Gamja Flower -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Song+Myung&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            autumn: {
+              50: '#FDF8F5',
+              100: '#F9ECE5',
+              200: '#F3D6C5',
+              300: '#EBB499',
+              400: '#E08B65',
+              500: '#D4683B',
+              600: '#BA5028',
+              700: '#943E1F',
+              800: '#75321A',
+              900: '#5F2916',
+            },
+            amberwood: '#7C482B',
+            fallgold: '#D97706',
+            maplered: '#B91C1C',
+            leafbg: '#FBF7F2'
+          },
+          fontFamily: {
+            sans: ['"Noto Sans KR"', 'sans-serif'],
+            serif: ['"Song Myung"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #F8F4EE;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .serif-title {
+      font-family: 'Song Myung', serif;
+    }
+    /* 가을 감성 부드러운 스크롤 */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* 부드러운 글래스모피즘 효과 */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(224, 139, 101, 0.2);
+    }
+    /* 가을 잎사귀 떨어지는 캔버스 */
+    #leaves-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+    /* 펄스 애니메이션 */
+    @keyframes subtle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+    .animate-float {
+      animation: subtle-bounce 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="text-stone-800 antialiased selection:bg-autumn-200 min-h-screen pb-28">
+
+  <!-- 가을 잎사귀 배경 캔버스 -->
+  <canvas id="leaves-canvas"></canvas>
+
+  <!-- 최상단 앱바 -->
+  <header class="sticky top-0 z-40 bg-[#F8F4EE]/90 backdrop-blur-md border-b border-autumn-200/60 px-4 py-3 flex items-center justify-between shadow-xs">
+    <div class="flex items-center space-x-2">
+      <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-autumn-100 text-autumn-600 font-bold text-xs shadow-inner">
+        1916
+      </span>
+      <div>
+        <p class="text-xs font-semibold tracking-wider text-autumn-700">대구일중학교</p>
+        <p class="text-[11px] text-stone-500">2026학년도 사제동행 힐링캠프</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-1">
+      <button onclick="shareNotice()" class="p-2 text-stone-600 hover:text-autumn-600 rounded-full active:bg-autumn-100 transition" title="공유하기">
+        <i class="ph ph-share-network text-xl"></i>
+      </button>
+      <a href="#emergency-contact" class="p-2 text-stone-600 hover:text-autumn-600 rounded-full active:bg-autumn-100 transition" title="인솔교사 연락처 바로가기">
+        <i class="ph ph-phone-call text-xl"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- 메인 컨테이너 -->
+  <main class="max-w-md mx-auto px-4 pt-4 space-y-5 relative z-20">
+
+    <!-- 최상단 핵심 집결 안내 카드 (가장 중요) -->
+    <section class="rounded-3xl p-4 sm:p-5 bg-gradient-to-r from-amber-500 via-autumn-500 to-autumn-600 text-white shadow-xl shadow-autumn-600/20 border-2 border-white/60 relative overflow-hidden animate-float">
+      <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+      
+      <div class="flex items-center justify-between mb-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-black tracking-wide border border-white/30 text-amber-100">
+          <i class="ph-fill ph-bell-ringing animate-pulse text-amber-200"></i>
+          출발 당일 필독 공지
+        </span>
+        <span class="text-[11px] font-medium text-amber-100/90">시간 엄수 필수</span>
+      </div>
+
+      <div class="bg-white/15 backdrop-blur-md rounded-2xl p-3.5 border border-white/20 mt-2 space-y-2">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-white text-autumn-600 flex items-center justify-center font-extrabold shadow-sm flex-shrink-0">
+            <i class="ph-fill ph-map-pin text-xl"></i>
+          </div>
+          <div>
+            <p class="text-[11px] text-amber-100 font-medium">집결 장소</p>
+            <p class="text-base sm:text-lg font-extrabold text-white tracking-tight">대구일중학교 본관 앞</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-2 border-t border-white/15">
+          <div class="w-10 h-10 rounded-xl bg-amber-200 text-amber-900 flex items-center justify-center font-extrabold shadow-sm flex-shrink-0">
+            <i class="ph-fill ph-alarm text-xl"></i>
+          </div>
+          <div>
+            <p class="text-[11px] text-amber-100 font-medium">집결 일시</p>
+            <p class="text-base sm:text-lg font-extrabold text-amber-200 tracking-tight">10월 17일(토) 아침 08:30까지</p>
+          </div>
+        </div>
+      </div>
+      <p class="text-[11px] text-white/90 text-center mt-2.5 font-light">
+        인원 점검 및 안전교육 후 정시에 바로 출발하므로 늦지 않게 모여주세요!
+      </p>
+    </section>
+
+    <!-- 감성 히어로 카드 -->
+    <section class="relative rounded-3xl overflow-hidden shadow-lg border border-autumn-200 text-white bg-gradient-to-br from-[#8D3F1D] via-[#A84C23] to-[#D66D38] p-6">
+      <!-- 배경 장식용 패턴 -->
+      <div class="absolute -right-6 -bottom-6 w-36 h-36 bg-amber-400/20 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="absolute -left-6 -top-6 w-32 h-32 bg-rose-500/20 rounded-full blur-xl pointer-events-none"></div>
+
+      <div class="relative z-10">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-medium text-amber-100 mb-3 border border-white/25">
+          <i class="ph-fill ph-sparkle text-amber-200"></i>
+          <span>가을빛으로 물드는 사제동행</span>
+        </div>
+        
+        <h1 class="serif-title text-2xl sm:text-3xl font-bold leading-tight tracking-wide text-white drop-shadow-sm">
+          비하인드 스토리<br>
+          <span class="text-amber-200 text-xl font-normal tracking-normal">(Behind Story) - 안동</span>
+        </h1>
+
+        <p class="mt-3 text-xs sm:text-sm text-stone-100/90 leading-relaxed font-light">
+          1학년 학생들의 상호 이해와 의사소통 역량을 키우고, 그윽한 가을 정취 속 안동 문화와 소중한 추억을 함께 나눕니다.
+        </p>
+
+        <!-- 출발 일시 안내 -->
+        <div class="mt-5 pt-4 border-t border-white/20 flex items-center justify-between">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-xl bg-white/15 backdrop-blur-sm flex items-center justify-center text-amber-200">
+              <i class="ph ph-calendar-check text-lg"></i>
+            </div>
+            <div>
+              <p class="text-[11px] text-amber-100/80">출발 일시</p>
+              <p class="text-sm font-semibold tracking-wide">2026. 10. 17. (토)</p>
+            </div>
+          </div>
+          <span class="text-xs px-3 py-1.5 rounded-xl bg-white/15 backdrop-blur-sm text-amber-100 border border-white/20 font-medium">
+            당일 체험학습
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 핵심 개요 퀵 그리드 -->
+    <section class="grid grid-cols-2 gap-3">
+      <div class="glass-card rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center space-x-2 text-autumn-600 mb-2">
+          <div class="w-8 h-8 rounded-xl bg-autumn-100 flex items-center justify-center">
+            <i class="ph ph-clock text-lg"></i>
+          </div>
+          <span class="text-xs font-semibold text-stone-700">운영 시간</span>
+        </div>
+        <div>
+          <p class="text-base font-bold text-stone-900">08:30 ~ 17:30</p>
+          <p class="text-[11px] text-autumn-700 font-medium mt-0.5">08:30 본관 앞 집결</p>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center space-x-2 text-autumn-600 mb-2">
+          <div class="w-8 h-8 rounded-xl bg-autumn-100 flex items-center justify-center">
+            <i class="ph ph-wallet text-lg"></i>
+          </div>
+          <span class="text-xs font-semibold text-stone-700">참가 비용</span>
+        </div>
+        <div>
+          <p class="text-base font-bold text-emerald-600">전액 학교 지원</p>
+          <p class="text-[11px] text-stone-500 mt-0.5">차량·입장료·중식 무료</p>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center space-x-2 text-autumn-600 mb-2">
+          <div class="w-8 h-8 rounded-xl bg-autumn-100 flex items-center justify-center">
+            <i class="ph ph-users text-lg"></i>
+          </div>
+          <span class="text-xs font-semibold text-stone-700">참가 대상</span>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-stone-800">1학년 여학생 희망자</p>
+          <p class="text-[11px] text-stone-500 mt-0.5">대구일중학교 1학년</p>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+        <div class="flex items-center space-x-2 text-autumn-600 mb-2">
+          <div class="w-8 h-8 rounded-xl bg-autumn-100 flex items-center justify-center">
+            <i class="ph ph-t-shirt text-lg"></i>
+          </div>
+          <span class="text-xs font-semibold text-stone-700">복장 안내</span>
+        </div>
+        <div>
+          <p class="text-sm font-bold text-stone-800">활동하기 편한 사복</p>
+          <p class="text-[11px] text-stone-500 mt-0.5">체험 및 대화의 시간 맞춤</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 방문 장소 & 프로그램 상세 -->
+    <section class="glass-card rounded-3xl p-5 shadow-sm space-y-4">
+      <div class="flex items-center justify-between border-b border-autumn-100 pb-3">
+        <div class="flex items-center space-x-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-autumn-500"></span>
+          <h2 class="font-bold text-stone-800 text-base">체험 장소 및 코스 안내</h2>
+        </div>
+        <span class="text-xs text-autumn-700 bg-autumn-100 px-2.5 py-0.5 rounded-full font-medium">안동 일원</span>
+      </div>
+
+      <!-- 장소 1: 안동요 -->
+      <div class="bg-white/80 rounded-2xl p-4 border border-autumn-200/70 hover:border-autumn-300 transition shadow-xs">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center space-x-2.5">
+            <span class="flex-shrink-0 w-7 h-7 rounded-lg bg-autumn-500 text-white font-bold flex items-center justify-center text-xs shadow-xs">
+              1
+            </span>
+            <div>
+              <h3 class="font-bold text-stone-900 text-base">안동요</h3>
+              <p class="text-xs text-autumn-600 font-medium">물레 및 도자기 빚기 체험 🏺</p>
+            </div>
+          </div>
+          <button onclick="copyAddress('경상북도 안동시 석주로 249-13')" class="text-xs text-stone-500 bg-stone-100 hover:bg-stone-200 px-2.5 py-1 rounded-lg flex items-center gap-1 active:scale-95 transition">
+            <i class="ph ph-copy"></i> 복사
+          </button>
+        </div>
+        <p class="mt-2.5 text-xs text-stone-600 bg-autumn-50/70 p-2.5 rounded-xl flex items-center gap-1.5">
+          <i class="ph ph-map-pin text-autumn-600 text-sm flex-shrink-0"></i>
+          <span>경상북도 안동시 석주로 249-13번지</span>
+        </p>
+        <p class="mt-2 text-xs text-stone-500 leading-normal pl-1">
+          흙의 온기를 느끼며 나만의 도자기를 직접 빚고 물레를 돌려보는 힐링 공예 프로그램입니다.
+        </p>
+      </div>
+
+      <!-- 장소 2: 맛있는 점심식사 -->
+      <div class="bg-gradient-to-r from-amber-50/90 to-orange-50/90 rounded-2xl p-4 border border-amber-200/80 transition shadow-xs relative overflow-hidden">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center space-x-2.5">
+            <span class="flex-shrink-0 w-7 h-7 rounded-lg bg-amber-500 text-white font-bold flex items-center justify-center text-xs shadow-xs">
+              2
+            </span>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <h3 class="font-bold text-stone-900 text-base">맛있는 점심식사</h3>
+                <span class="text-[10px] font-semibold bg-amber-200/70 text-amber-800 px-1.5 py-0.5 rounded-md">중식 제공</span>
+              </div>
+              <p class="text-xs text-amber-700 font-medium">따뜻한 식사와 도란도란 이야기 🍱</p>
+            </div>
+          </div>
+          <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg flex items-center gap-1">
+            <i class="ph-fill ph-check-circle text-xs"></i> 학교 전액 지원
+          </span>
+        </div>
+        <p class="mt-2.5 text-xs text-stone-600 bg-white/80 p-2.5 rounded-xl flex items-center gap-1.5 border border-amber-100">
+          <i class="ph-fill ph-fork-knife text-amber-600 text-sm flex-shrink-0"></i>
+          <span>안동 현지 식당 (도자기 체험 후 편안한 식사 시간)</span>
+        </p>
+        <p class="mt-2 text-xs text-stone-500 leading-normal pl-1">
+          오전 도자기 체험 후 다 함께 모여 맛있는 점심을 먹으며 에너지를 충전하고, 친구 및 선생님과 정다운 이야기를 나눕니다.
+        </p>
+      </div>
+
+      <!-- 장소 3: 만휴정 -->
+      <div class="bg-white/80 rounded-2xl p-4 border border-autumn-200/70 hover:border-autumn-300 transition shadow-xs">
+        <div class="flex items-start justify-between">
+          <div class="flex items-center space-x-2.5">
+            <span class="flex-shrink-0 w-7 h-7 rounded-lg bg-amber-600 text-white font-bold flex items-center justify-center text-xs shadow-xs">
+              3
+            </span>
+            <div>
+              <h3 class="font-bold text-stone-900 text-base">만휴정</h3>
+              <p class="text-xs text-amber-700 font-medium">가을 풍경 정취 감상 & 대화의 시간 🍂</p>
+            </div>
+          </div>
+          <button onclick="copyAddress('경상북도 안동시 길안면 묵계하리길 42')" class="text-xs text-stone-500 bg-stone-100 hover:bg-stone-200 px-2.5 py-1 rounded-lg flex items-center gap-1 active:scale-95 transition">
+            <i class="ph ph-copy"></i> 복사
+          </button>
+        </div>
+        <p class="mt-2.5 text-xs text-stone-600 bg-autumn-50/70 p-2.5 rounded-xl flex items-center gap-1.5">
+          <i class="ph ph-map-pin text-amber-600 text-sm flex-shrink-0"></i>
+          <span>경북 안동시 길안면 묵계하리길 42</span>
+        </p>
+        <p class="mt-2 text-xs text-stone-500 leading-normal pl-1">
+          조선 시대 정자와 맑은 계곡, 붉게 물든 단풍이 어우러진 명소에서 사제 간 따뜻한 대화의 시간과 사진 촬영을 진행합니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- 개별 준비물 인터랙티브 체크리스트 -->
+    <section class="glass-card rounded-3xl p-5 shadow-sm space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <i class="ph ph-check-square-offset text-autumn-600 text-xl"></i>
+          <h2 class="font-bold text-stone-800 text-base">학생 개별 준비물 체크</h2>
+        </div>
+        <span id="check-counter" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-autumn-100 text-autumn-700">0/4 준비완료</span>
+      </div>
+      <p class="text-xs text-stone-500">출발 전날 밤 가방에 챙겼는지 하나씩 탭하여 체크해보세요!</p>
+
+      <div class="space-y-2 pt-1" id="checklist-container">
+        <!-- 체크 아이템 1 -->
+        <label class="flex items-center p-3 rounded-2xl bg-white/70 border border-stone-200/80 cursor-pointer select-none transition hover:bg-amber-50/50">
+          <input type="checkbox" onchange="updateChecklist(this)" class="check-item w-5 h-5 rounded-md text-autumn-600 focus:ring-autumn-400 accent-autumn-600">
+          <div class="ml-3 flex items-center justify-between w-full">
+            <span class="text-sm font-medium text-stone-700 item-text">개인 마실 물 (텀블러 추천)</span>
+            <span class="text-base">💧</span>
+          </div>
+        </label>
+        <!-- 체크 아이템 2 -->
+        <label class="flex items-center p-3 rounded-2xl bg-white/70 border border-stone-200/80 cursor-pointer select-none transition hover:bg-amber-50/50">
+          <input type="checkbox" onchange="updateChecklist(this)" class="check-item w-5 h-5 rounded-md text-autumn-600 focus:ring-autumn-400 accent-autumn-600">
+          <div class="ml-3 flex items-center justify-between w-full">
+            <span class="text-sm font-medium text-stone-700 item-text">필기도구 (체험 기록용)</span>
+            <span class="text-base">✏️</span>
+          </div>
+        </label>
+        <!-- 체크 아이템 3 -->
+        <label class="flex items-center p-3 rounded-2xl bg-white/70 border border-stone-200/80 cursor-pointer select-none transition hover:bg-amber-50/50">
+          <input type="checkbox" onchange="updateChecklist(this)" class="check-item w-5 h-5 rounded-md text-autumn-600 focus:ring-autumn-400 accent-autumn-600">
+          <div class="ml-3 flex items-center justify-between w-full">
+            <span class="text-sm font-medium text-stone-700 item-text">비상금 (개인 간식 및 비상용)</span>
+            <span class="text-base">👛</span>
+          </div>
+        </label>
+        <!-- 체크 아이템 4 -->
+        <label class="flex items-center p-3 rounded-2xl bg-white/70 border border-stone-200/80 cursor-pointer select-none transition hover:bg-amber-50/50">
+          <input type="checkbox" onchange="updateChecklist(this)" class="check-item w-5 h-5 rounded-md text-autumn-600 focus:ring-autumn-400 accent-autumn-600">
+          <div class="ml-3 flex items-center justify-between w-full">
+            <span class="text-sm font-medium text-stone-700 item-text">활동하기 편한 사복 & 편한 운동화</span>
+            <span class="text-base">👟</span>
+          </div>
+        </label>
+      </div>
+    </section>
+
+    <!-- 안심 & 안전 수칙 안내 -->
+    <section class="glass-card rounded-3xl p-5 shadow-sm space-y-3">
+      <div class="flex items-center space-x-2 text-stone-800">
+        <i class="ph ph-shield-check text-autumn-600 text-xl"></i>
+        <h2 class="font-bold text-stone-800 text-base">안전하고 즐거운 힐링을 위한 약속</h2>
+      </div>
+      <ul class="text-xs text-stone-600 space-y-2 pl-1 leading-relaxed">
+        <li class="flex items-start gap-2">
+          <span class="text-autumn-600 font-bold">•</span>
+          <span>집결 시간(08:30)을 엄수하여 <strong>학교 본관 앞</strong>으로 늦지 않게 모입니다.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-autumn-600 font-bold">•</span>
+          <span>체험 장소 이동 시 항상 모둠원 및 인솔 선생님과 함께 동행합니다.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-autumn-600 font-bold">•</span>
+          <span>몸이 불편하거나 비상 상황 발생 시 즉시 인솔교사에게 알립니다.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="text-autumn-600 font-bold">•</span>
+          <span>서로를 배려하고 따뜻한 격려의 말을 건네며 깊이 있는 대화의 시간을 만듭니다.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 인솔교사 연락처 및 비상연락 안내 섹션 -->
+    <section id="emergency-contact" class="scroll-mt-20 rounded-3xl p-6 bg-gradient-to-br from-amber-50 to-orange-100/70 border-2 border-autumn-300 shadow-md">
+      <div class="flex items-center justify-between mb-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-autumn-600 text-white font-bold text-xs">
+          <i class="ph ph-warning-circle"></i>
+          긴급 연락처
+        </span>
+        <span class="text-xs text-stone-500 font-medium">대구일중 상담복지부</span>
+      </div>
+
+      <h3 class="serif-title text-xl font-bold text-stone-900">
+        지도교사 (인솔교사) 안내
+      </h3>
+      <p class="text-xs text-stone-600 mt-1 leading-relaxed">
+        캠프 당일 긴급 상황, 지각, 건강 이상 또는 보호자 문의사항 발생 시 즉시 아래 버튼을 눌러 담당 선생님께 전화해 주세요.
+      </p>
+
+      <!-- 긴급 전화 바로걸기 카드 박스 -->
+      <div class="mt-4 bg-white rounded-2xl p-4 shadow-sm border border-autumn-200">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-xs text-stone-500 font-medium">인솔 총괄 책임</p>
+            <p class="text-base font-bold text-stone-900 mt-0.5">상담복지부장 선생님</p>
+            <p class="text-lg font-extrabold text-autumn-600 tracking-wider mt-1">010-2560-9149</p>
+          </div>
+          <a href="tel:010-2560-9149" 
+             class="flex flex-col items-center justify-center w-14 h-14 rounded-2xl bg-autumn-500 hover:bg-autumn-600 text-white shadow-md active:scale-95 transition"
+             aria-label="인솔교사 전화걸기">
+            <i class="ph-fill ph-phone-call text-2xl animate-pulse"></i>
+            <span class="text-[10px] font-bold mt-0.5">전화걸기</span>
+          </a>
+        </div>
+        
+        <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
+          <span>학교 대표 교무실</span>
+          <a href="tel:053-233-7500" class="text-stone-700 font-semibold hover:text-autumn-600 flex items-center gap-1">
+            <i class="ph ph-phone text-sm"></i> 053-233-7500
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 학교 공지 및 서명 푸터 안내 -->
+    <footer class="text-center pt-2 pb-6 space-y-2">
+      <div class="flex items-center justify-center space-x-1.5 text-xs text-autumn-800 font-medium">
+        <span>친절은 마음으로</span>
+        <span>•</span>
+        <span>청렴은 행동으로</span>
+      </div>
+      <p class="text-xs font-semibold text-stone-700">대 구 일 중 학 교 장</p>
+      <p class="text-[11px] text-stone-400">대구광역시 북구 옥산로 17길 21 (침산3동 400-4)</p>
+    </footer>
+
+  </main>
+
+  <!-- 하단 고정 바로가기 바 (스마트폰 최적화) -->
+  <aside class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-autumn-200/80 px-4 py-2.5 shadow-lg max-w-md mx-auto">
+    <div class="flex items-center gap-3">
+      <!-- 상세 신청 확인 알림 버튼 -->
+      <button onclick="openNoticeModal()" class="flex-1 py-3 px-4 rounded-2xl bg-autumn-100 hover:bg-autumn-200 text-autumn-800 font-semibold text-xs flex items-center justify-center gap-1.5 transition active:scale-98">
+        <i class="ph ph-article text-base"></i>
+        <span>가정통신문 원문 보기</span>
+      </button>
+
+      <!-- 인솔교사 원터치 통화 버튼 -->
+      <a href="tel:010-2560-9149" class="flex-1 py-3 px-4 rounded-2xl bg-gradient-to-r from-autumn-500 to-autumn-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-autumn-500/25 active:scale-98 transition">
+        <i class="ph-fill ph-phone-call text-base"></i>
+        <span>인솔교사 바로연락</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- 토스트 메시지 컴포넌트 -->
+  <div id="toast" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-xl bg-stone-900/90 text-white text-xs shadow-lg transform transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-2">
+    <i class="ph ph-check-circle text-emerald-400 text-base"></i>
+    <span id="toast-message">주소가 복사되었습니다.</span>
+  </div>
+
+  <!-- 가정통신문 원문 모달 -->
+  <div id="notice-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl max-w-sm w-full max-h-[85vh] flex flex-col overflow-hidden shadow-2xl animate-scale-up">
+      <div class="p-4 bg-autumn-50 border-b border-autumn-100 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <i class="ph ph-file-text text-autumn-600 text-lg"></i>
+          <h3 class="font-bold text-sm text-stone-800">가정통신문 원문 확인</h3>
+        </div>
+        <button onclick="closeNoticeModal()" class="w-8 h-8 rounded-full bg-white text-stone-500 hover:text-stone-800 flex items-center justify-center shadow-xs">
+          <i class="ph ph-x font-bold"></i>
+        </button>
+      </div>
+
+      <div class="p-5 overflow-y-auto space-y-4 text-xs text-stone-700 leading-relaxed font-sans">
+        <div class="text-center pb-2 border-b border-stone-100">
+          <p class="font-bold text-stone-800 text-sm">2026학년도 학교장과 함께하는 사제동행 힐링캠프</p>
+          <p class="text-autumn-600 font-semibold mt-0.5">『비하인드 스토리(Behind Story) - 안동』 안내</p>
+        </div>
+
+        <p class="text-stone-600">
+          항상 본교의 교육활동에 적극 협력하여 주심에 깊이 감사드립니다. 1학년 학생들의 상호 이해와 존중을 바탕으로 한 의사소통 역량 향상 및 문화 체험의 기회를 제공하고자 이번 체험학습을 실시합니다.
+        </p>
+
+        <div class="bg-stone-50 p-3 rounded-xl space-y-1.5 border border-stone-200/60">
+          <p><strong>1. 행사명:</strong> 『비하인드 스토리(Behind Story) - 안동』</p>
+          <p><strong>2. 일자 및 집결:</strong> 2026년 10월 17일(토), 08:30 본관 앞 집결 (운영: 08:30 ~ 17:30)</p>
+          <p><strong>3. 장소:</strong> 안동 일원</p>
+          <p><strong>4. 참가대상:</strong> 1학년 여학생 중 희망자</p>
+          <p><strong>5. 준비물:</strong> 물, 필기도구, 비상금, 편안한 사복</p>
+          <p><strong>6. 경비:</strong> 학교 지원 (차량, 입장료, 중식 포함)</p>
+          <p><strong>7. 인솔교사 연락처:</strong> 010-2560-9149 (상담복지부장)</p>
+        </div>
+
+        <div class="text-center pt-2 text-stone-500">
+          <p class="font-semibold text-stone-700">2026. 9. 28.</p>
+          <p class="font-bold text-stone-900 mt-1">대 구 일 중 학 교 장</p>
+        </div>
+      </div>
+
+      <div class="p-3 bg-stone-50 border-t border-stone-100 text-center">
+        <button onclick="closeNoticeModal()" class="w-full py-2.5 rounded-xl bg-autumn-600 text-white font-medium text-xs">
+          확인 완료
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1. 주소 및 클립보드 복사 유틸
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      toastMessage.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      toast.classList.add('opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.remove('opacity-100');
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 2200);
+    }
+
+    function copyAddress(text) {
+      try {
+        const tempInput = document.createElement('textarea');
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        showToast('주소가 클립보드에 복사되었습니다.');
+      } catch (err) {
+        showToast('복사 중 오류가 발생했습니다.');
+      }
+    }
+
+    // 2. 공유하기 기능
+    function shareNotice() {
+      const shareText = "2026 대구일중 사제동행 힐링캠프 (비하인드 스토리 - 안동)\n★집결: 2026.10.17(토) 아침 08:30 학교 본관 앞\n일정: 08:30~17:30\n인솔교사 연락처: 010-2560-9149";
+      try {
+        const tempInput = document.createElement('textarea');
+        tempInput.value = shareText;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        showToast('힐링캠프 안내 내용이 복사되었습니다.');
+      } catch (err) {
+        showToast('공유 정보 복사 실패');
+      }
+    }
+
+    // 3. 모달 제어
+    function openNoticeModal() {
+      document.getElementById('notice-modal').classList.remove('hidden');
+    }
+    function closeNoticeModal() {
+      document.getElementById('notice-modal').classList.add('hidden');
+    }
+
+    // 4. 체크리스트 카운터 & 상태 반영
+    function updateChecklist(checkbox) {
+      const labelText = checkbox.closest('label').querySelector('.item-text');
+      if (checkbox.checked) {
+        labelText.classList.add('line-through', 'text-stone-400');
+      } else {
+        labelText.classList.remove('line-through', 'text-stone-400');
+      }
+
+      const allChecks = document.querySelectorAll('.check-item');
+      const checkedCount = document.querySelectorAll('.check-item:checked').length;
+      const counter = document.getElementById('check-counter');
+      counter.textContent = `${checkedCount}/${allChecks.length} 준비완료`;
+
+      if (checkedCount === allChecks.length) {
+        counter.className = "text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700";
+        showToast("모든 준비물을 챙겼습니다! 즐거운 캠프 되세요 🎉");
+      } else {
+        counter.className = "text-xs font-semibold px-2 py-0.5 rounded-full bg-autumn-100 text-autumn-700";
+      }
+    }
+
+    // 5. 가을 단풍잎 떨어지는 캔버스 애니메이션
+    function initLeavesAnimation() {
+      const canvas = document.getElementById('leaves-canvas');
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      // 단풍잎 색상 팔레트
+      const colors = ['#D4683B', '#BA5028', '#E08B65', '#D97706', '#B45309', '#C2410C'];
+      const leafCount = 18;
+      const leaves = [];
+
+      class Leaf {
+        constructor() {
+          this.reset(true);
+        }
+        reset(randomY = false) {
+          this.x = Math.random() * width;
+          this.y = randomY ? Math.random() * height : -20;
+          this.size = 8 + Math.random() * 12;
+          this.speedY = 0.6 + Math.random() * 1.0;
+          this.speedX = Math.sin(Math.random() * Math.PI) * 0.8;
+          this.rotation = Math.random() * 360;
+          this.rotSpeed = (Math.random() - 0.5) * 1.5;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.opacity = 0.4 + Math.random() * 0.35;
+          this.swingAngle = Math.random() * Math.PI * 2;
+          this.swingSpeed = 0.02 + Math.random() * 0.02;
+        }
+        update() {
+          this.swingAngle += this.swingSpeed;
+          this.x += Math.sin(this.swingAngle) * 0.7 + this.speedX;
+          this.y += this.speedY;
+          this.rotation += this.rotSpeed;
+
+          if (this.y > height + 20 || this.x < -20 || this.x > width + 20) {
+            this.reset();
+          }
+        }
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate((this.rotation * Math.PI) / 180);
+          ctx.globalAlpha = this.opacity;
+          ctx.fillStyle = this.color;
+
+          // 단풍/나뭇잎 실루엣 패스
+          ctx.beginPath();
+          ctx.moveTo(0, -this.size);
+          ctx.quadraticCurveTo(this.size * 0.7, -this.size * 0.3, this.size * 0.6, this.size * 0.5);
+          ctx.quadraticCurveTo(0, this.size, 0, this.size * 1.1);
+          ctx.quadraticCurveTo(0, this.size, -this.size * 0.6, this.size * 0.5);
+          ctx.quadraticCurveTo(-this.size * 0.7, -this.size * 0.3, 0, -this.size);
+          ctx.fill();
+
+          ctx.restore();
+        }
+      }
+
+      for (let i = 0; i < leafCount; i++) {
+        leaves.push(new Leaf());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        leaves.forEach(leaf => {
+          leaf.update();
+          leaf.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // 초기화
+    window.onload = function() {
+      initLeavesAnimation();
+    };
+  </script>
+</body>
+</html>
